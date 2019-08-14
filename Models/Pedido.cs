@@ -15,7 +15,7 @@ namespace ProAcompanhamentoPedido.Models
         [Column("id")]
         public int PedidoId { get; set; }
 
-        [Column("Cliente_id")]
+        [Column("cliente_id")]
         public int ClienteId { get; set; }
 
         [Column("status")]

@@ -1,21 +1,73 @@
-﻿<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+﻿@model IEnumerable<Pedido>
+@{
+    Layout = "_Layout";
+}
 
-    <title>Pedido</title>
+<script>
+    setInterval(function () { location.reload(); }, 3000);
+</script>
+<div class="row">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <table class="table col-4">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="background-color:aqua; border-color:aqua;">Código</th>
+                <th scope="col" style="background-color:aqua; border-color:aqua;">@DomStatusPedido.SEPARACAO</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Pedido p in Model)
+            {
+                if (p.Status == DomStatusPedido.SEPARACAO)
+                {
+                    <tr>
+                        <td>@p.PedidoId</td>
+                        <td>@p.Cliente.Nome</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
 
-</head>
-<body>
-    <h1>Hello, world!</h1>
+    <table class="table col-4">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">@DomStatusPedido.BALCAO</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Pedido p in Model)
+            {
+                if (p.Status == DomStatusPedido.BALCAO)
+                {
+                    <tr>
+                        <td>@p.PedidoId</td>
+                        <td>@p.Cliente.Nome</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
 
-
-
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-</body>
-</html>
+    <table class="table col-4">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">@DomStatusPedido.ENTREGUE</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Pedido p in Model)
+            {
+                if (p.Status == DomStatusPedido.ENTREGUE)
+                {
+                    <tr>
+                        <td>@p.PedidoId</td>
+                        <td>@p.Cliente.Nome</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
